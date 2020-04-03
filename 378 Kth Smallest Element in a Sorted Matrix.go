@@ -1,10 +1,8 @@
 type IntHeap []int
 func (h IntHeap) Len() int           { return len(h) }
-func (h IntHeap) Less(i, j int) bool { return h[i] > h[j] }
+func (h IntHeap) Less(i, j int) bool { return h[i] > h[j] } //最大堆
 func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
 func (h *IntHeap) Push(x interface{}) {
-    // Push and Pop use pointer receivers because they modify the slice's length,
-    // not just its contents.
     *h = append(*h, x.(int))
 }
 func (h *IntHeap) Pop() interface{} {
@@ -26,10 +24,6 @@ func kthSmallest(matrix [][]int, k int) int {
             }
         }
     }
-    var res int
-    switch v := heap.Pop(h).(type) {
-        case int:
-            res = v
-	}
-    return res
+    // 接口断言转换类型为int， 否则提交出错
+    return heap.Pop(h).(int)
 }
