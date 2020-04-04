@@ -10,17 +10,14 @@ func isPalindrome(head *ListNode) bool {
    for p := head; p != nil; p = p.Next {
        n++
    }
+   //计算出中点位置，从中点开始反转链表， n + 1为了处理节点个数是奇数的情况
    p := head
-   for i := 0; i < n / 2; i++ {
+   for i := 0; i < (n + 1) / 2; i++ {
        p = p.Next
    }
-   if n % 2 == 1 {
-       p = p.Next
-   }
-   //从中点开始反转链表
    p = reverse(p)
    for p != nil {
-       if head.Val != p.Val {
+       if p.Val != head.Val {
            return false
        }
        p, head = p.Next, head.Next
@@ -29,9 +26,9 @@ func isPalindrome(head *ListNode) bool {
 }
 
 func reverse(p *ListNode) *ListNode {
-    var pre *ListNode
+    var temp *ListNode
     for p != nil {
-        p.Next, pre, p = pre, p, p.Next
+        p, p.Next, temp = p.Next, temp, p
     }
-    return pre
+    return temp
 }
