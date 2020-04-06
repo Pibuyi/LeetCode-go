@@ -11,6 +11,9 @@ func rob(nums []int) int {
 func helper(nums []int) int {
     pre, cur := 0, 0
     for _, v := range nums {
+        // temp := cur
+        // cur = max(pre + v, cur)
+        // pre = temp
         cur, pre = max(pre + v, cur), cur
     }
     return cur
