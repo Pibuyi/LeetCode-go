@@ -1,7 +1,7 @@
 func reconstructQueue(people [][]int) [][]int {
     len := len(people)
     res := make([][]int, 0)
-    // 排序 身高降序， 前卖弄的升序
+    // 排序 身高降序， 前面的升序
     sort.Slice(people, func(i, j int) bool{
         if people[i][0] == people[j][0] {
             return people[i][1] < people[j][1]
