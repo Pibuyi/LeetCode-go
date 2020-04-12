@@ -7,3 +7,11 @@ func entityParser(text string) string {
     text = strings.Replace(text, "&amp;", "&",  -1)
     return text
 }
+/*
+func entityParser(s string) string {
+	return strings.ReplaceAll(html.UnescapeString(s), "⁄", "/")
+}
+func entityParser(s string) string {
+	return strings.NewReplacer(`&quot;`, `"`, `&apos;`, `'`, `&gt;`, `>`, `&lt;`, `<`, `&frasl;`, `/`, `&amp;`, `&`).Replace(s)
+}
+*/
