@@ -7,26 +7,21 @@ func longestOnes(A []int, K int) int {
         return n
     }
     left, right := 0, 0
-    num, res := 0, K
+    cnt, res := 0, K
     for right < n {
         if A[right] == 0 {
-            num++
+            cnt++
         }
-        for num > K {
+        for cnt > K {
             if A[left] == 0 {
-                num --
+                cnt --
             }
             left++
         }
         right++
-        res = max(res, right - left)
+        if res < right - left {
+            res = right - left
+        }
     }
     return res
-}
-
-func max(i, j int)  int {
-    if i > j {
-        return i 
-    }
-    return j
 }
